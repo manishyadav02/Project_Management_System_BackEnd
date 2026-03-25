@@ -381,10 +381,10 @@ export const downloadFile = asyncHandler(async (req, res, next) => {
   if (!file)
     return next(new ErrorHandler("File not found in this project", 404));
 
- 
+  const directDownloadUrl = file.fileUrl.replace("/upload/", "/upload/fl_attachment/");
   return res.status(200).json({
     success:true,
-    fileUrl:file.fileUrl,
+   fileUrl: directDownloadUrl,
     fileName:file.fileName,
   })
 });
